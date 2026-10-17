@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="Explore Marvel movies and series in release order or chronological story order. Track your watch progress.">
+  <title>Marvel Watch Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#" aria-label="Marvel Watch Order home"><span class="brand-mark">M</span><span>MARVEL <b>WATCH ORDER</b></span></a>
+  <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation">☰</button>
+  <nav id="main-nav" class="main-nav">
+    <a href="#timeline">Timeline</a><a href="#where-to-watch">Where to watch</a><a href="#account">Account & sync</a>
+    <button id="auth-button" class="nav-button">Sign in</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">THE MARVEL CINEMATIC UNIVERSE</p>
+    <h1>Your Marvel marathon.<br><span>One universe. Two orders.</span></h1>
+    <p>Explore MCU movies, series and specials by original release or approximate in-universe story timeline. Keep your progress synced when you sign in.</p>
+    <a class="primary-button" href="#timeline">Explore the timeline <span>↓</span></a>
+    <p class="tiny-note">Fan-made guide • Not affiliated with Marvel or Disney</p>
+  </div>
+  <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="hero-m">M</div></div>
+</section>
+
+<main class="container">
+  <section class="section-title" id="timeline">
+    <div><p class="eyebrow">CHOOSE YOUR JOURNEY</p><h2>Marvel timeline</h2><p class="muted">Chronological placement is approximate, especially for multiverse stories and projects with overlapping events.</p></div>
+    <div class="stats"><div><strong id="total-count">0</strong><span>TITLES</span></div><div><strong id="movie-count">0</strong><span>MOVIES</span></div><div><strong id="series-count">0</strong><span>SERIES / SPECIALS</span></div></div>
+  </section>
+
+  <div class="toolbar">
+    <div class="order-switch" role="group" aria-label="Order">
+      <button class="order-button active" data-order="release">Release order</button>
+      <button class="order-button" data-order="story">Story order</button>
+    </div>
+    <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Search titles, years, phases…" autocomplete="off"></label>
+    <div class="filters">
+      <div class="type-switch" role="group" aria-label="Type filter">
+        <button class="type-button active" data-type="all">All</button><button class="type-button" data-type="movie">Movies</button><button class="type-button" data-type="series">Series</button><button class="type-button" data-type="special">Specials</button>
+      </div>
+      <select id="year-filter" aria-label="Filter by year"><option value="all">All release years</option></select>
+      <select id="status-filter" aria-label="Filter by watch status"><option value="all">All progress</option><option value="unwatched">Not watched</option><option value="watched">Watched</option></select>
+    </div>
+  </div>
+
+  <section class="catalog-section">
+    <div class="result-label"><span class="red-dot"></span><span id="results-label">ALL RELEASES</span><span class="rule"></span><span id="sync-label" class="sync-label">Progress saved on this device</span></div>
+    <div id="timeline-list" class="timeline"></div>
+    <div id="empty-state" class="empty-state" hidden><h3>No titles found</h3><p>Try changing your search or filters.</p><button id="reset-filters" class="secondary-button">Reset filters</button></div>
+  </section>
+
+  <section id="where-to-watch" class="info-section">
+    <div><p class="eyebrow">LEGAL STREAMING</p><h2>Where to watch in India</h2><p class="muted">Availability changes by title and date. These official services are starting points; search the title inside the service to confirm current Hindi audio, subscription requirements and availability.</p></div>
+    <div class="platform-grid">
+      <a class="platform-card" href="https://www.hotstar.com/in" target="_blank" rel="noopener noreferrer"><span class="platform-logo disney">D+</span><div><b>JioHotstar</b><small>Check Marvel catalogue in India</small></div><span>↗</span></a>
+      <a class="platform-card" href="https://www.netflix.com/in/" target="_blank" rel="noopener noreferrer"><span class="platform-logo netflix">N</span><div><b>Netflix India</b><small>Search title availability</small></div><span>↗</span></a>
+      <a class="platform-card" href="https://www.primevideo.com/" target="_blank" rel="noopener noreferrer"><span class="platform-logo prime">▶</span><div><b>Prime Video</b><small>Check included vs rent/buy</small></div><span>↗</span></a>
+      <a class="platform-card" href="https://www.justwatch.com/in" target="_blank" rel="noopener noreferrer"><span class="platform-logo jw">JW</span><div><b>JustWatch India</b><small>Compare legal streaming options</small></div><span>↗</span></a>
+    </div>
+    <p class="legal-note">This website does not stream or host movies. Platform links are official destinations, not a guarantee that every title is included. JustWatch is a search guide; verify the final offer and language options with the provider.</p>
+  </section>
+
+  <section id="account" class="account-section">
+    <div class="account-copy"><p class="eyebrow">YOUR MARATHON, SAVED</p><h2>Keep progress across devices</h2><p class="muted">Create an account to sync watched titles across browsers. Without an account, progress remains in this browser.</p></div>
+    <div class="auth-card">
+      <div class="auth-tabs"><button class="auth-tab active" data-auth="login">Sign in</button><button class="auth-tab" data-auth="signup">Create account</button></div>
+      <form id="auth-form">
+        <label>Email<input type="email" id="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input type="password" id="password" autocomplete="current-password" minlength="6" required placeholder="At least 6 characters"></label>
+        <button class="primary-button full" type="submit" id="auth-submit">Sign in</button>
+        <p id="auth-message" class="form-message" aria-live="polite">Set up Supabase in the project config to enable cloud sync.</p>
+      </form>
+      <button id="signout-button" class="secondary-button full" hidden>Sign out</button>
+    </div>
+  </section>
+</main>
+<footer><a class="brand" href="#"><span class="brand-mark">M</span><span>MARVEL <b>WATCH ORDER</b></span></a><p>Fan-made guide. No movie files are hosted here.</p><a href="https://www.marvel.com/" target="_blank" rel="noopener noreferrer">Official Marvel website ↗</a></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
